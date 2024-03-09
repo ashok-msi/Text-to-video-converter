@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Text to video converter</title>
+        <style>
+            body{
+                margin:0;
+                padding:0;
+            }
+            #d1{
+                background-color: green;
+                padding-top:5px;
+                padding-bottom:5px;
+                height: 50px;
+            }
+            .registerbtn{
+                width: 100px;
+                font-size: 20px;
+                border-radius: 10px;
+                cursor: pointer;
+                margin-top: 12px;
+            }
+            #title{ 
+                font-size: 50px;
+            }
+            #textinput::placeholder{
+                text-align: center;
+                font-size: 20px;
+            }
+            #d3{
+                display:flex;
+                gap:100px;
+                justify-content:center;
+                margin-top:20px;
+            }
+            #previewbtn{
+                margin:15px;
+                font-size:20px;
+                cursor: pointer;
+            }
+            #downloadbtn{
+                margin:5px;
+                font-size:20px;
+                cursor:pointer;
+            }
+            .sharebuttons{
+                font-size: 20px;
+                cursor: pointer;
+                width: 200px;
+                height: 35px;
+                border: none;
+            }
+            #instagram{
+                background-color: red;
+            }
+            #tiktok{
+                background-color: black;
+            }
+            #facebook{
+                background-color: blue;
+            }
+            #twitter{
+                background-color: lightblue;
+            }
+         
+        </style>
+    </head>
+    <body>
+        <div id="d1" align="right">
+                <button class="registerbtn"><a href="signin.html" target="_blank" style="color: black;">Sign in</a></button>
+                &nbsp;&nbsp;
+                <button class="registerbtn"><a href="login.html" target="_blank" style="color: black;">Login</a></button> 
+        </div>
+
+        <div id="d2" align="center">
+            <h1 id="title">Text to Video converter in one click</h1>
+                <textarea id="textinput" rows="5" cols="70" placeholder="Enter your text here..."></textarea><br>
+                <button id="previewbtn" onclick="preview()">Preview</button><br>
+                <div id="previewdiv"></div>
+                <button id="downloadbtn"><a id="downloadlink" download="output.mp4" onclick="download()" style="color: black;">Download Video</a></button>
+        </div>
+
+        <div id="d3" align="center">
+            <button id="instagram" class="sharebuttons"><a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank" style="color: black;">Instagram</a></button>
+            <button id="tiktok" class="sharebuttons"><a href="https://www.tiktok.com/login" target="_blank" style="color: white;">Tiktok</a></button>
+            <button id="facebook" class="sharebuttons"><a href="https://www.facebook.com/?stype=lo&deoia=1&jlou=AfcU-zXFfSr-NbL2cKkAFAw6RqlRbtIy2A7zab2OQyFmjsIHesp5-BicUHiPNH-f2dg4PS7pN8xh2LNJ94-3LjpbnkU6dH8JFe9Hdl8u2jYM9A&smuh=53721&lh=Ac-PuTs6aMPA6HyyaKU" target="_blank" style="color: white;">Facebook</a></button>
+            <button id="twitter" class="sharebuttons"><a href="https://twitter.com/i/flow/login" target="_blank" style="color: black;">Twitter</a></button>
+        </div>
+
+        <script>
+            function preview() {
+                //var textInput = document.getElementById("textinput").value;
+                var previewDiv = document.getElementById("previewdiv");
+
+                //function to convert text to video
+                var videoUrl = `s01ep01.mkv`;
+
+                // Display the video preview
+                previewDiv.innerHTML = '<video width="500" controls><source src="' + videoUrl + '" type="video/mp4"></video>';
+            }
+
+            function download(){
+                var textInput=document.getElementById("textinput").value;
+                
+                //function to convert text to video
+                var videoUrl = convertTextToVideo();
+
+                var downloadLink = document.getElementById("downloadlink");
+                downloadLink.href = videoUrl;
+            }
+        </script>
+    </body>
+</html>
